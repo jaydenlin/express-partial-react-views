@@ -55,6 +55,9 @@ function createEngine(engineOptions) {
         if (typeof reactComponentConfig.filename === "undefined") {
           throw new Error("Must be a filename in application/x-react-component.");
         }
+        if (typeof reactComponentConfig.domid === "undefined") {
+          throw new Error("Must be a domid in application/x-react-component.");
+        }
       } catch (e) {
         throw new Error("There is an error in application/x-react-component. " + e.toString());
       }
@@ -64,7 +67,9 @@ function createEngine(engineOptions) {
     //Replace configs with Server side rendering HTML
     rawReactComponentConfigsOnHTML.map(function(index) {
       var componentFilename = reactComponentConfigs[index].filename;
+      var componentDomId = reactComponentConfigs[index].domid
       var componentOptions = reactComponentConfigs[index].options;
+
 
       var componentPath = path.join(reactComponentFolder, componentFilename);
       //setup props
@@ -83,7 +88,7 @@ function createEngine(engineOptions) {
           React.createElement(component, componentProps)
         );
         //replace 
-        contentQuery(this).replaceWith(prependMarkup + markup + appendMarkup);
+        contentQuery(this).replaceWith(prependMarkup + "<div id='" + componentDomId + "'>" + markup + "</div>" + appendMarkup);
 
       } catch (e) {
         return cb(componentPath + " rendering fails. " + e.toString());
