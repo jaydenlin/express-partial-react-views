@@ -53,7 +53,7 @@ function createEngine(engineOptions) {
       try {
         reactComponentConfig = JSON.parse(contentQuery(this).html());
         if (typeof reactComponentConfig.filename === "undefined") {
-          throw new Error("There is must be a filename in application/x-react-component.");
+          throw new Error("Must be a filename in application/x-react-component.");
         }
       } catch (e) {
         throw new Error("There is an error in application/x-react-component. " + e.toString());
