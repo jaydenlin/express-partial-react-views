@@ -80,7 +80,7 @@ function createEngine(engineOptions) {
         // Transpiled ES6 may export components as { default: Component }
         component = component.default || component;
         markup += React.renderToStaticMarkup(
-          React.createElement(component, options)
+          React.createElement(component, componentProps)
         );
         //replace 
         contentQuery(this).replaceWith(prependMarkup + markup + appendMarkup);
