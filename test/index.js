@@ -10,7 +10,7 @@ describe('Unit Tests', function() {
 		// simulate the express settings
 		engineOptions = {
 			settings: {
-				env: 'development',
+
 				views: __dirname,
 				reactComponentFolder: __dirname
 			}
