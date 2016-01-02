@@ -1,6 +1,7 @@
 # express-partial-react-views
-
-> Inspired by express-react-views
+[![Build Status](https://travis-ci.org/jaydenlin/express-partial-react-views.svg?branch=master)](https://travis-ci.org/jaydenlin/express-partial-react-views)
+> Render partial react views in a base html file
+> Inspired by [express-react-views](https://github.com/reactjs/express-react-views)
 
 ##Usage
 
