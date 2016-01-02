@@ -11,8 +11,8 @@ describe('Unit Tests', function() {
 		engineOptions = {
 			settings: {
 				env: 'development',
-				views: path.join(__dirname, "./"),
-				reactComponentFolder: path.join(__dirname, "./")
+				views: path.join(process.cwd(), "test"),
+				reactComponentFolder: path.join(process.cwd(), "test")
 			}
 		}
 		console.log(__dirname);
