@@ -1,0 +1,29 @@
+{
+  "name": "express-partial-react-views",
+  "version": "0.0.1",
+  "description": "express view engine for partial react views",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaydenlin/express-partial-react-views"
+  },
+  "keywords": [
+    "express",
+    "react",
+    "view engine"
+  ],
+  "author": "Jayden Lin <jayden.weiyu@gmail.com> (http://www.jdlin.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaydenlin/express-partial-react-views/issues"
+  },
+  "homepage": "https://github.com/jaydenlin/express-partial-react-views",
+  "dependencies": {
+    "cheerio": "0.19.0",
+    "object-assign": "4.0.1",
+    "react": "0.13.3"
+  }
+}
