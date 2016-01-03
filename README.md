@@ -40,12 +40,26 @@ app.engine('html', require('express-partial-react-views').createEngine();
 
 `index.html`
 ```html
-<script type="application/x-react-component">
-{	
-	"domid":"top",
-	"filename":"top.jsx"
-}
-</script>
+<html>
+	<body>
+		
+		...Other parts of the html	
+		
+		<!--the part that need React Componet to render-->
+		<script type="application/x-react-component">
+		{	
+			"domid":"top",
+			"filename":"top.jsx"
+		}
+		</script>
+
+		...Other parts of the html
+
+		...Other parts of the html
+
+		...Other parts of the html
+	</body>
+</html>
 ```
 
 #### Step 4. Add route & render codes to your app. `eg. app.js`
