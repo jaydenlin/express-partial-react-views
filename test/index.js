@@ -10,6 +10,7 @@ var mockApp = {}
 
 describe('Unit Tests', function() {
 	before(function() {
+		this.timeout(50000);
 		// simulate the express settings
 		engineOptions = {
 			settings: {
