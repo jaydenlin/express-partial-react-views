@@ -22,7 +22,7 @@ describe('Unit Tests', function() {
 		render(path.join(engineOptions.settings.views, "base.html"), engineOptions, function(err, output) {
 			console.log(err);
 			assert.equal(err, null);
-			assert.equal(output.trim(), '<div id="root"><div>Hello World!</div></div>');
+			assert.equal(output.trim(), '<div id="top"><div>Hello World!</div></div>');
 			done();
 		});
 	});
@@ -38,7 +38,7 @@ describe('Unit Tests', function() {
 		render(path.join(engineOptions.settings.views, "base.html"), engineOptions, function(err, output) {
 			console.log(err);
 			assert.equal(err, null);
-			assert.equal(output.trim(), '<div id="root"><div>Hello World!The rendered component name is testComponent.jsx</div></div>');
+			assert.equal(output.trim(), '<div id="top"><div>Hello World!The rendered component name is top.jsx</div></div>');
 			done();
 		});
 	});
@@ -52,7 +52,7 @@ describe('Unit Tests', function() {
 		render(path.join(engineOptions.settings.views, "base.html"), engineOptions, function(err, output) {
 			console.log(err);
 			assert.equal(err, null);
-			assert.equal(output.trim(), '<h3>The prepended html for component testComponent.jsx</h3><div id="root"><div>Hello World!</div></div>');
+			assert.equal(output.trim(), '<h3>The prepended html for component top.jsx</h3><div id="top"><div>Hello World!</div></div>');
 			done();
 		});
 	});
@@ -65,7 +65,7 @@ describe('Unit Tests', function() {
 		render(path.join(engineOptions.settings.views, "base.html"), engineOptions, function(err, output) {
 			console.log(err);
 			assert.equal(err, null);
-			assert.equal(output.trim(), '<div id="root"><div>Hello World!</div></div><h3>The appended html for component testComponent.jsx</h3>');
+			assert.equal(output.trim(), '<div id="top"><div>Hello World!</div></div><h3>The appended html for component top.jsx</h3>');
 			done();
 		});
 	});
