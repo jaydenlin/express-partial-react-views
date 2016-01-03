@@ -30,6 +30,7 @@ npm install express-react-views react
 
 `app.js`
 ```js
+var express = require('express');
 var app = express();
 //set up views path. the folder for the base htmls.
 app.set('views', __dirname + '/src'); 
@@ -38,7 +39,7 @@ app.set('view engine', 'html');
 //set up the react component folder. the view engine will find components from here.
 app.set('reactComponentFolder', __dirname + '/src/components');
 //set up the view engine
-app.engine('html', require('express-partial-react-views').createEngine();
+app.engine('html', require('express-partial-react-views').createEngine());
 ```
 
 #### Step 3. Set up the base HTML file. `eg. index.html`
@@ -73,4 +74,22 @@ app.engine('html', require('express-partial-react-views').createEngine();
 app.get("/", function(req, res) {
 	res.render("index");
 });
+```
+
+### Configuration Options
+
+You can pass options in when creating your engine.
+
+option | values | default
+-------|--------|--------
+`propsProvider` | a callback function that returns the props for all React Componets. The `filename` and `options` arguments are from the value you set in `application/x-react-component` | ```js function(domid,filename,options){ return {}; }```
+`prependMarkupProvider` | a callback function that returns the prepended markup for all React Componets. The `filename` and `options` arguments are from the value you set in `application/x-react-component` | ```js function(domid,filename,options){ return ""; }```
+`appendMarkupProvider` | a callback function that returns the appended markup for all React Componets. The `filename` and `options` arguments are from the value you set in `application/x-react-component` | ```js function(domid,filename,options){ return ""; }```
+`useBabel` | `true`: use `babel` to apply JSX, ESNext transforms to views.<br>**Note:** if already using `babel` or `node-jsx` in your project, you should set this to `false` | `true`
+
+The defaults are sane, but just in case you want to change something, here's how it would look:
+
+```js
+var options = { useBabel: false };
+app.engine('jsx', require('express-react-views').createEngine(options));
 ```
