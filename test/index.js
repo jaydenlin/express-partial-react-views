@@ -3,7 +3,7 @@ var React = require('react/addons');
 var renderEngine = require('../index');
 var path = require("path");
 var engineOptions = {};
-require("node-jsx").install();
+//require("node-jsx").install();
 
 describe('Unit Tests', function() {
 	before(function() {

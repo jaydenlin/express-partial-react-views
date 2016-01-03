@@ -33,7 +33,7 @@ function createEngine(engineOptions) {
     if (engineOptions.useBabel && !babelRegistered) {
       // Passing a RegExp to Babel results in an issue on Windows so we'll just
       // pass the view path.
-      require('babel/register')({
+      require('babel-core/register')({
         only: options.settings.views
       });
 
