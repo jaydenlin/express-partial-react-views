@@ -83,11 +83,8 @@ You can pass options in when creating your engine.
 option | values                                          | default
 -------|-------------------------------------------------|--------
 propsProvider | a callback function that returns the props for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return {}; }
-
 prependMarkupProvider | a callback function that returns the prepended markup for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return ""; }
-
 appendMarkupProvider | a callback function that returns the appended markup for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return ""; }
-
 useBabel | **true**: use **babel** to apply JSX, ESNext transforms to views.<br>**Note:** if already using **babel** or **node-jsx** in your project, you should set this to `false` | `true`
 
 The defaults are sane, but just in case you want to change something, here's how it would look:
