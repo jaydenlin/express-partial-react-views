@@ -15,9 +15,9 @@ This module provides the view engine to help you do server-side rendering to tho
 <img src="https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/conceptWithCode.png" width="500"/>
 
 ## Highlight
-* Provide the `propsProvider` for you to custom & load props for all componets before rendering
-* Provide the `prependMarkupProvider` for you to custom prepended markup for all componets when rendering.
-* Provide the `appendMarkupProvider` for you to custom appepended markup for all componets when rendering.
+* Provide the `propsProvider` for you to custom & load props for all componets before rendering (Promise support!)
+* Provide the `prependMarkupProvider` for you to custom prepended markup for all componets when rendering.(Promise support!)
+* Provide the `appendMarkupProvider` for you to custom appepended markup for all componets when rendering.(Promise support!)
 
 ## Usage
 
@@ -32,6 +32,7 @@ npm install express-partial-react-views react
 ```js
 var express = require('express');
 var app = express();
+var engine=require('express-partial-react-views');
 //set up views path. the folder for the base htmls.
 app.set('views', __dirname + '/src'); 
 //set up the extensions for base htmls
@@ -39,7 +40,7 @@ app.set('view engine', 'html');
 //set up the react component folder. the view engine will find components from here.
 app.set('reactComponentFolder', __dirname + '/src/components');
 //set up the view engine
-app.engine('html', require('express-partial-react-views').createEngine());
+app.engine('html', engine.createEngine());
 ```
 
 #### Step 3. Set up the base HTML file. `eg. index.html`
@@ -93,22 +94,43 @@ app.engine('html', engine.createEngine(options));
 
 ```
 
-### Provider Service Options
+## Advanced Usage
+In real world, you may not simply render the React Components but also need to **load the props** via api fetch.   
+Or somethimes you need to prepend and append some html tags to your React Components. (style/js codes ..etc).   
+So this module provides a `providerService` funciton for you to do those stuffs.
 
-You can pass options in when creating your engine.
+* `providerService` funciton will wrap the `res.render` and return a Promise.
+```js
+var engine=require('express-partial-react-views');
+app.get("/", function(req, res) {
+	//wrap the res.render with providerService
+	engine.providerService(req.app, "index", {
+	    //Provider Service Options here...
+	}).then(function(result) {
+		res.render("index", result);
+	});
+
+});
+```
+* There are `Provider Service Options` for you to set custom functions. Those funcitons have to return a Promise.
+
+### Provider Service Options
+You can pass options in when creating your own `providerService`.
 
 option | values                                          | default
 -------|-------------------------------------------------|--------
-propsProvider | A callback function that returns the props for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return {}; }
-prependMarkupProvider | A callback function that returns the prepended markup for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return ""; }
-appendMarkupProvider | A callback function that returns the appended markup for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return ""; }
+propsProvider | A callback function that returns a Promise with props for React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return Promise.resolve({}); }
+prependMarkupProvider | A callback function that returns a Promise with the prepended markup for React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return Promise.resolve(""); }
+appendMarkupProvider | A callback function that returns a Promise with the appended markup for React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return Promise.resolve(""); }
 
 The defaults are sane, but just in case you want to change something, here's how it would look:
 
 ```js
+var engine=require('express-partial-react-views');
 app.get("/", function(req, res) {
-
+	//wrap the res.render with providerService
 	engine.providerService(req.app, "index", {
+	    //Set your own providers here
 		propsProvider: function(componentDomId, componentFilename, componentOptions) {
 			return Promise.resolve({
 				name: componentDomId
@@ -120,3 +142,15 @@ app.get("/", function(req, res) {
 
 });
 ```
+> NOTE: The custom Provider functions you set will apply to **all React Components** with different **domid**,**filename** and **options** arguments from the value you set in **application/x-react-component**. 
+
+###propsProvider
+You can see `example/e02-usage-with-props' for the usage.
+###prependMarkupProvider
+You can see `example/e03-usage-with-prependMarkup' for the usage.
+###appendMarkupProvider
+You can see `example/e04-usage-with-appendMarkup' for the usage.
+
+
+
+
