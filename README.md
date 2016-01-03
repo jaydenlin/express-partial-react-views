@@ -6,12 +6,12 @@
 ## Concept
 In some cases, you may only need React componets to **render in some parts of your page**.      
 As you can see in the following image. The React componets are in a base html.      
-![Image](https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/concept.png)
+![Image](https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/concept.png) { width: 300px; }
 
 This module provides the view engine to help you do server-side rendering to those React componets' part.   
 **By writing some custom html tags** (with `domid` and `filename` provided), the view engine will replace the part with renderred html contents.
 
-![Image](https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/conceptWithCode.png)
+![Image](https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/conceptWithCode.png) { width: 300px; }
 
 ## Usage
 
