@@ -29,8 +29,8 @@ app.engine('html', require('express-partial-react-views').createEngine();
 //index.html
 <script type="application/x-react-component">
 {	
-	"domid":"root",
-	"filename":"testComponent.jsx"
+	"domid":"top",
+	"filename":"top.jsx"
 }
 </script>
 ```
