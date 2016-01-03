@@ -15,7 +15,7 @@ describe('Unit Tests', function() {
 				reactComponentFolder: __dirname
 			}
 		}
-		console.log(__dirname);
+
 	});
 	it('should render correct html with application/x-react-component settings in base.html', function(done) {
 		var render = renderEngine.createEngine();
