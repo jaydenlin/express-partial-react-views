@@ -21,7 +21,7 @@ This module provides the view engine to help you do server-side rendering to tho
 
 ## Usage
 
-#### Step 1. Install this node moudle with react
+#### Step 1. Install this node module with react
 ```
 npm install express-partial-react-views react
 ```
@@ -80,8 +80,8 @@ app.get("/", function(req, res) {
 
 You can pass options in when creating your engine.
 
-option | values | default
--------|--------|--------
+option | values                                          | default
+-------|-------------------------------------------------|--------
 `propsProvider` | a callback function that returns the props for all React Componets. The `domid`,`filename` and `options` arguments are from the value you set in `application/x-react-component` | ``` function(domid,filename,options){ return {}; }```
 `prependMarkupProvider` | a callback function that returns the prepended markup for all React Componets. The `domid`,`filename` and `options` arguments are from the value you set in `application/x-react-component` | ``` function(domid,filename,options){ return ""; }```
 `appendMarkupProvider` | a callback function that returns the appended markup for all React Componets. The `domid`,`filename` and `options` arguments are from the value you set in `application/x-react-component` | ``` function(domid,filename,options){ return ""; }```
