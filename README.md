@@ -16,12 +16,12 @@ This module provides the view engine to help you do server-side rendering to tho
 
 ## Usage
 
-## Step 1. Install this node moudle with react
+### Step 1. Install this node moudle with react
 ```
 npm install express-react-views react
 ```
 
-## Step 2. Add express settings to your app. `eg. app.js`
+### Step 2. Add express settings to your app. `eg. app.js`
 
 `app.js`
 ```js
@@ -36,7 +36,7 @@ app.set('reactComponentFolder', __dirname + '/src/components');
 app.engine('html', require('express-partial-react-views').createEngine();
 ```
 
-## Step 3. Set up the base HTML file. `eg. index.html`
+### Step 3. Set up the base HTML file. `eg. index.html`
 
 `index.html`
 ```html
@@ -48,7 +48,7 @@ app.engine('html', require('express-partial-react-views').createEngine();
 </script>
 ```
 
-## Step 4. Add route & render codes to your app. `eg. app.js`
+### Step 4. Add route & render codes to your app. `eg. app.js`
 `app.js`
 ```js
 app.get("/", function(req, res) {
