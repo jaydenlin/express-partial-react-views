@@ -23,7 +23,7 @@ This module provides the view engine to help you do server-side rendering to tho
 
 #### Step 1. Install this node moudle with react
 ```
-npm install express-react-views react
+npm install express-partial-react-views react
 ```
 
 #### Step 2. Add express settings to your app. `eg. app.js`
@@ -91,5 +91,5 @@ The defaults are sane, but just in case you want to change something, here's how
 
 ```js
 var options = { useBabel: false };
-app.engine('jsx', require('express-react-views').createEngine(options));
+app.engine('html', require('express-partial-react-views').createEngine(options));
 ```
