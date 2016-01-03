@@ -29,7 +29,7 @@ describe('Unit Tests', function() {
 
 	it('should render correct html with props using propsProvider', function(done) {
 		var render = renderEngine.createEngine({
-			propsProvider: function(filename, options) {
+			propsProvider: function(domid, filename, options) {
 				return {
 					name: "The rendered component name is " + filename
 				};
@@ -45,7 +45,7 @@ describe('Unit Tests', function() {
 
 	it('should render correct html and prepended html using prependMarkupProvider', function(done) {
 		var render = renderEngine.createEngine({
-			prependMarkupProvider: function(filename, options) {
+			prependMarkupProvider: function(domid, filename, options) {
 				return "<h3>The prepended html for component " + filename + "</h3>";
 			}
 		});
@@ -58,7 +58,7 @@ describe('Unit Tests', function() {
 	});
 	it('should render correct html and appended html using appendMarkupProvider', function(done) {
 		var render = renderEngine.createEngine({
-			appendMarkupProvider: function(filename, options) {
+			appendMarkupProvider: function(domid, filename, options) {
 				return "<h3>The appended html for component " + filename + "</h3>";
 			}
 		});

@@ -5,13 +5,13 @@ var path = require("path");
 var cheerio = require("cheerio");
 
 var DEFAULT_OPTIONS = {
-  propsProvider: function(componentFilename, componentOptions) {
+  propsProvider: function(componentDomId, componentFilename, componentOptions) {
     return {};
   },
-  prependMarkupProvider: function(componentFilename, componentOptions) {
+  prependMarkupProvider: function(componentDomId, componentFilename, componentOptions) {
     return ""
   },
-  appendMarkupProvider: function(componentFilename, componentFilename, componentOptions) {
+  appendMarkupProvider: function(componentDomId, componentFilename, componentOptions) {
     return ""
   },
   useBabel: true
@@ -84,11 +84,11 @@ function createEngine(engineOptions) {
 
       var componentPath = path.join(reactComponentFolder, componentFilename);
       //setup props
-      var componentProps = propsProvider(componentFilename, componentOptions);
+      var componentProps = propsProvider(componentDomId, componentFilename, componentOptions);
       //setip prependMarkup
-      var prependMarkup = prependMarkupProvider(componentFilename, componentOptions);
+      var prependMarkup = prependMarkupProvider(componentDomId, componentFilename, componentOptions);
       //setup appendMarkup
-      var appendMarkup = appendMarkupProvider(componentFilename, componentOptions);
+      var appendMarkup = appendMarkupProvider(componentDomId, componentFilename, componentOptions);
 
       try {
         var markup = "";
