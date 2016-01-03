@@ -23,7 +23,7 @@ This module provides the view engine to help you do server-side rendering to tho
 
 #### Step 1. Install this node module with react
 ```
-npm install express-partial-react-views react
+npm install express-partial-react-views react@0.13.3
 ```
 
 #### Step 2. Add express settings to your app. `eg. app.js`
