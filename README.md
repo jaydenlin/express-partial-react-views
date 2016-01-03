@@ -145,11 +145,11 @@ app.get("/", function(req, res) {
 > NOTE: The custom Provider functions you set will apply to **all React Components** with different **domid**,**filename** and **options** arguments from the value you set in **application/x-react-component**. 
 
 ###propsProvider
-You can see `example/e02-usage-with-props' for the usage.
+You can see `example/e02-usage-with-props` for the usage.
 ###prependMarkupProvider
-You can see `example/e03-usage-with-prependMarkup' for the usage.
+You can see `example/e03-usage-with-prependMarkup` for the usage.
 ###appendMarkupProvider
-You can see `example/e04-usage-with-appendMarkup' for the usage.
+You can see `example/e04-usage-with-appendMarkup` for the usage.
 
 
 
