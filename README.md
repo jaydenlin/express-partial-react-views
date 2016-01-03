@@ -14,6 +14,11 @@ This module provides the view engine to help you do server-side rendering to tho
 
 <img src="https://raw.githubusercontent.com/jaydenlin/express-partial-react-views-doc/gh-pages/images/conceptWithCode.png" width="500"/>
 
+## Highlight
+* Provide the `propsProvider` for you to custom & load props for all componets before rendering
+* Provide the `prependMarkupProvider` for you to custom prepended markup for all componets when rendering.
+* Provide the `appendMarkupProvider` for you to custom appepended markup for all componets when rendering.
+
 ## Usage
 
 #### Step 1. Install this node moudle with react
