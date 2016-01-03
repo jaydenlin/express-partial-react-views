@@ -9,19 +9,25 @@ app.set('view engine', 'html');
 //set up the react component folder. the view engine will find components from here. 
 app.set('reactComponentFolder', __dirname + '/src/components');
 //set up the view engine 
-app.engine('html', require('../../index').createEngine({
-	propsProvider: function(domid, filename, options) {
-		return {
-			name: domid
-		}
-	}
-}));
+var engine = require('../../index');
+app.engine('html', engine.createEngine());
 
 app.get("/", function(req, res) {
-	res.render("index");
+
+	engine.providerService(req.app, "index", {
+		propsProvider: function(componentDomId, componentFilename, componentOptions) {
+			return Promise.resolve({
+				name: componentDomId
+			});
+		}
+	}).then(function(result) {
+		res.render("index", result);
+	});
+
 });
 
 var server = http.createServer(app);
 server.listen(process.env.PORT || 8080, function() {
 	console.log("Listening on %j", server.address());
+
 });

@@ -9,17 +9,23 @@ app.set('view engine', 'html');
 //set up the react component folder. the view engine will find components from here. 
 app.set('reactComponentFolder', __dirname + '/src/components');
 //set up the view engine 
-app.engine('html', require('../../index').createEngine({
-	appendMarkupProvider: function(domid, filename, options) {
-		return "<div>appended markup from provider</div>";
-	}
-}));
+var engine = require('../../index');
+app.engine('html', engine.createEngine());
 
 app.get("/", function(req, res) {
-	res.render("index");
+
+	engine.providerService(req.app, "index", {
+		appendMarkupProvider: function(componentDomId, componentFilename, componentOptions) {
+			return Promise.resolve("<div>appended markup from provider</div>");
+		}
+	}).then(function(result) {
+		res.render("index", result);
+	});
+
 });
 
 var server = http.createServer(app);
 server.listen(process.env.PORT || 8080, function() {
 	console.log("Listening on %j", server.address());
+
 });
