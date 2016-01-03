@@ -14,7 +14,7 @@ app.engine('html', engine.createEngine());
 
 app.get("/", function(req, res) {
 
-	res.render("index", result);
+	res.render("index");
 
 });
 
