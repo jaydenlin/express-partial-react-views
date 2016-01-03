@@ -81,7 +81,7 @@ app.get("/", function(req, res) {
 You can pass options in when creating your engine.
 
 option | values                                          | default
-=======|=================================================|========
+-------|-------------------------------------------------|--------
 propsProvider | a callback function that returns the props for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return {}; }
 -------|-------------------------------------------------|--------
 prependMarkupProvider | a callback function that returns the prepended markup for all React Componets. The **domid**,**filename** and **options** arguments are from the value you set in **application/x-react-component** | function(domid,filename,options){ return ""; }
