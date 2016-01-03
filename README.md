@@ -1,15 +1,15 @@
 # express-partial-react-views
 [![Build Status](https://travis-ci.org/jaydenlin/express-partial-react-views.svg?branch=master)](https://travis-ci.org/jaydenlin/express-partial-react-views)
-> Render partial react views in a base html file
+> Render partial react views in a base html file   
 > Inspired by [express-react-views](https://github.com/reactjs/express-react-views)
 
-##Usage
+## Usage
 
 ```
 npm install express-react-views react
 ```
 
-##Add express settings to your app
+## Add express settings to your app
 
 ```js
 //app.js
