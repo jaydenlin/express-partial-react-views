@@ -126,11 +126,11 @@ appendMarkupProvider | A callback function that returns a Promise with the appen
 The defaults are sane, but just in case you want to change something, here's how it would look:
 
 ```js
-var engine=require('express-partial-react-views');
+var engine = require('express-partial-react-views');
 app.get("/", function(req, res) {
 	//wrap the res.render with providerService
 	engine.providerService(req.app, "index", {
-	    //Set your own providers here
+		//Set your own providers here
 		propsProvider: function(componentDomId, componentFilename, componentOptions) {
 			return Promise.resolve({
 				name: componentDomId
@@ -144,11 +144,11 @@ app.get("/", function(req, res) {
 ```
 > NOTE: The custom Provider functions you set will apply to **all React Components** with different **domid**,**filename** and **options** arguments from the value you set in **application/x-react-component**. 
 
-###propsProvider
+### propsProvider
 You can see `example/e02-usage-with-props` for the usage.
-###prependMarkupProvider
+### prependMarkupProvider
 You can see `example/e03-usage-with-prependMarkup` for the usage.
-###appendMarkupProvider
+### appendMarkupProvider
 You can see `example/e04-usage-with-appendMarkup` for the usage.
 
 
