@@ -31,7 +31,7 @@ app.engine('html', require('express-partial-react-views').createEngine();
 </script>
 ```
 
-## Add render route & render codes to your app
+## Add route & render codes to your app
 ```js
 app.get("/", function(req, res) {
 	res.render("index");
