@@ -1,6 +1,6 @@
 {
   "name": "express-partial-react-views",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Express view engine which renders partial react views in a base html file",
   "main": "index.js",
   "scripts": {
