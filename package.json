@@ -22,12 +22,13 @@
   },
   "homepage": "https://github.com/jaydenlin/express-partial-react-views",
   "dependencies": {
+    "babel": "6.3.26",
     "cheerio": "0.19.0",
     "express": "4.13.3",
     "lodash": "3.10.1",
-    "object-assign": "4.0.1",
-    "react": "0.13.3",
     "mocha": "2.3.4",
-    "node-jsx": "0.13.3"
+    "node-jsx": "0.13.3",
+    "object-assign": "4.0.1",
+    "react": "0.13.3"
   }
 }

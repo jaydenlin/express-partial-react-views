@@ -13,7 +13,8 @@ var DEFAULT_OPTIONS = {
   },
   appendMarkupProvider: function(componentFilename, componentFilename, componentOptions) {
     return ""
-  }
+  },
+  useBabel: true
 };
 
 function createEngine(engineOptions) {
@@ -22,11 +23,22 @@ function createEngine(engineOptions) {
     reactComponentFolder,
     propsProvider,
     appendMarkupProvider,
-    prependMarkupProvider;
+    prependMarkupProvider,
+    babelRegistered = false;
 
   engineOptions = assign({}, DEFAULT_OPTIONS, engineOptions || {});
 
   function renderFile(filename, options, cb) {
+
+    if (engineOptions.useBabel && !babelRegistered) {
+      // Passing a RegExp to Babel results in an issue on Windows so we'll just
+      // pass the view path.
+      require('babel/register')({
+        only: options.settings.views
+      });
+
+      babelRegistered = true;
+    }
     //Check the reactComponent Folder settings
     if (typeof options.settings.reactComponentFolder !== "undefined") {
       reactComponentFolder = options.settings.reactComponentFolder;
@@ -70,7 +82,6 @@ function createEngine(engineOptions) {
       var componentDomId = reactComponentConfigs[index].domid
       var componentOptions = reactComponentConfigs[index].options;
 
-
       var componentPath = path.join(reactComponentFolder, componentFilename);
       //setup props
       var componentProps = propsProvider(componentFilename, componentOptions);
@@ -87,7 +98,7 @@ function createEngine(engineOptions) {
         markup += React.renderToStaticMarkup(
           React.createElement(component, componentProps)
         );
-        //replace 
+        //replace with renderred React Components
         contentQuery(this).replaceWith(prependMarkup + "<div id='" + componentDomId + "'>" + markup + "</div>" + appendMarkup);
 
       } catch (e) {
