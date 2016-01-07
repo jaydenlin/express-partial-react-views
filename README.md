@@ -48,24 +48,24 @@ app.engine('html', engine.createEngine());
 `index.html`
 ```html
 <html>
-	<body>
-		
-		...Other parts of the html	
-		
-		<!--the part that need React Componet to render-->
-		<script type="application/x-react-component">
-		{	
-			"domid":"top",
-			"filename":"top.jsx"
-		}
-		</script>
+    <body>
+        
+        ...Other parts of the html  
+        
+        <!--the part that need React Componet to render-->
+        <script type="application/x-react-component">
+        {   
+            "domid":"top",
+            "filename":"top.jsx"
+        }
+        </script>
 
-		...Other parts of the html
+        ...Other parts of the html
 
-		...Other parts of the html
+        ...Other parts of the html
 
-		...Other parts of the html
-	</body>
+        ...Other parts of the html
+    </body>
 </html>
 ```
 
@@ -73,7 +73,7 @@ app.engine('html', engine.createEngine());
 `app.js`
 ```js
 app.get("/", function(req, res) {
-	res.render("index");
+    res.render("index");
 });
 ```
 
@@ -103,12 +103,12 @@ So this module provides a `providerService` funciton for you to do those stuffs.
 ```js
 var engine=require('express-partial-react-views');
 app.get("/", function(req, res) {
-	//wrap the res.render with providerService
-	engine.providerService(req.app, "index", {
-	    //Provider Service Options here...
-	}).then(function(result) {
-		res.render("index", result);
-	});
+    //wrap the res.render with providerService
+    engine.providerService(req.app, "index", {
+        //Provider Service Options here...
+    }).then(function(result) {
+        res.render("index", result);
+    });
 
 });
 ```
@@ -128,17 +128,17 @@ The defaults are sane, but just in case you want to change something, here's how
 ```js
 var engine = require('express-partial-react-views');
 app.get("/", function(req, res) {
-	//wrap the res.render with providerService
-	engine.providerService(req.app, "index", {
-		//Set your own providers here
-		propsProvider: function(componentDomId, componentFilename, componentOptions) {
-			return Promise.resolve({
-				name: componentDomId
-			});
-		}
-	}).then(function(result) {
-		res.render("index", result);
-	});
+    //wrap the res.render with providerService
+    engine.providerService(req.app, "index", {
+        //Set your own providers here
+        propsProvider: function(componentDomId, componentFilename, componentOptions) {
+            return Promise.resolve({
+                name: componentDomId
+            });
+        }
+    }).then(function(result) {
+        res.render("index", result);
+    });
 
 });
 ```
